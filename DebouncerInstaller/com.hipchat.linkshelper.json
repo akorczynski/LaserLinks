@@ -4,7 +4,6 @@
   "path": "HipChatLinksHelper.exe",
   "type": "stdio",
   "allowed_origins": [
-    "chrome-extension://ehkinnkedgheenjbbkljkccndhodnecn/",
-    "chrome-extension://igmhebgidlbjbfgfahhaipgmnhgplmjk/"
+    "chrome-extension://cjjejijmmpedkcncokmcdomhgcikahkh/"
   ]
 }
