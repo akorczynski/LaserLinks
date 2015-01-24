@@ -1,0 +1,14 @@
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\bin\Debug\EPDMLogger.exe.config
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\bin\Debug\EPDMLogger.exe
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\bin\Debug\EPDMLogger.pdb
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\bin\Debug\EPDMLogger.xml
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\obj\Debug\EPDMLogger.Form1.resources
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\obj\Debug\EPDMLogger.Resources.resources
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\obj\Debug\EPDMLogger.vbproj.GenerateResource.Cache
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\obj\Debug\EPDMLogger.exe
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\obj\Debug\EPDMLogger.xml
+c:\users\joel.moxley\documents\visual studio 2013\Projects\EPDMLogger\obj\Debug\EPDMLogger.pdb
+C:\Dev\HipChatDebounce\PDMLogger\bin\Debug\EPDMLogger.exe.config
+C:\Dev\HipChatDebounce\PDMLogger\obj\Debug\EPDMLogger.exe
+C:\Dev\HipChatDebounce\PDMLogger\obj\Debug\EPDMLogger.xml
+C:\Dev\HipChatDebounce\PDMLogger\obj\Debug\EPDMLogger.pdb

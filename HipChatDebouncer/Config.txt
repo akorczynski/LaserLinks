@@ -1,0 +1,7 @@
+﻿AuthToken
+LogFilePath
+60
+ErrorRoomID
+username:!ExcludeUser,IncludeUser
+Dir1,RoomID1,!ExcludeRegex1,!ExcludeRegex2,IncludeRegex1,IncludeRegex2
+Dir2,RoomID2,!ExcludeRegex1,!ExcludeRegex2,IncludeRegex1,IncludeRegex2
