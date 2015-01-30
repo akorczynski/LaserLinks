@@ -26,8 +26,6 @@ namespace Tests
             // Rename
             var newFileName = _FolderTest + _FolderAccess + "Fc2.txt";
             File.Move(fileName, newFileName);
-            // Delete
-            File.Delete(newFileName);
 
             // With no access
             fileName = _FolderTest + _FolderNoAccess + "Fc.txt";
@@ -40,8 +38,6 @@ namespace Tests
             // Rename
             newFileName = _FolderTest + _FolderNoAccess + "Fc2.txt";
             File.Move(fileName, newFileName);
-            // Delete
-            File.Delete(newFileName);
 
             Assert.IsTrue(true);
         }
@@ -55,18 +51,6 @@ namespace Tests
             var aDir = Directory.CreateDirectory(folderName);         
             // Rename
             Directory.Move(aDir.FullName, folderName + "2");
-            // Delete
-            Directory.Delete(folderName + "2");
-
-            // With no access
-            folderName = _FolderTest + _FolderNoAccess + @"\Fc";
-            // Create 
-            // Create 
-            aDir = Directory.CreateDirectory(folderName);         
-            // Rename
-            Directory.Move(aDir.FullName, folderName + "2");
-            // Delete
-            Directory.Delete(folderName + "2");
 
             Assert.IsTrue(true);
         }

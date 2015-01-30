@@ -34,7 +34,6 @@ namespace DeBouncer
             fsw.Changed += SendFileChangeCreateMessage;
             fsw.Created += SendFileChangeCreateMessage;
 
-            fsw.Deleted += (sender, eventArgs) => SendMessage(eventArgs, false);
             fsw.Renamed += (sender, eventArgs) => SendMessage(eventArgs, false);
             fsw.EnableRaisingEvents = true;
 
@@ -46,12 +45,11 @@ namespace DeBouncer
             };
             dsw.Changed += (sender, eventArgs) => SendMessage(eventArgs, true);
             dsw.Created += (sender, eventArgs) => SendMessage(eventArgs, true);
-            dsw.Deleted += (sender, eventArgs) => SendMessage(eventArgs, true);
             dsw.Renamed += (sender, eventArgs) => SendMessage(eventArgs, true);
             dsw.EnableRaisingEvents = true;
         }
 
-        // This handles file change or create events others (delete, rename and dir events) call directly to SendMessage
+        // This handles file change or create events others (rename and dir events) call directly to SendMessage
         private void SendFileChangeCreateMessage(object sender, FileSystemEventArgs fsEvent)
         {
             SendFileChangeCreateMessage(fsEvent);
@@ -136,9 +134,6 @@ namespace DeBouncer
                     case WatcherChangeTypes.Created:
                         changeType = "New ";
                         break;
-                    case WatcherChangeTypes.Deleted:
-                        changeType = "Deleted ";
-                        break;
                     case WatcherChangeTypes.Renamed:
                         changeType = "Renamed ";
                         break;
@@ -148,45 +143,24 @@ namespace DeBouncer
                 }
                 // Find owner
                 var userName = "";
-                if (fsEvent.ChangeType != WatcherChangeTypes.Deleted)
+                try
                 {
-                    try
-                    {
-                        userName =
-                            File.GetAccessControl(fsEvent.FullPath)
-                                .GetOwner(typeof (System.Security.Principal.NTAccount))
-                                .ToString();
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        Logger.LogMessage("Rejected because unauthorized exception trying to find owner: " +
-                                          fsEvent.FullPath);
-                        return;
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogMessage("Unknown error trying to find owner (file/dir not being rejected) Error: " + e.Message + " Path: " + fsEvent.FullPath);
-                    }
+                    userName =
+                        File.GetAccessControl(fsEvent.FullPath)
+                            .GetOwner(typeof (System.Security.Principal.NTAccount))
+                            .ToString();
                 }
-                else
+                catch (UnauthorizedAccessException)
                 {
-                    // Verify you should have access
-                    try
-                    {
-                        Directory.GetAccessControl(Path.GetDirectoryName(fsEvent.FullPath));
-                    }
-                    catch (UnauthorizedAccessException e)
-                    {
-                        Logger.LogMessage(
-                            "Rejected delete because unauthorized exception trying to get access control: " +
-                            fsEvent.FullPath);
-                        return;
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogMessage("Unknown error trying to get access (on delete).  Error: " + e.Message + " Path: " + fsEvent.FullPath);
-                    }
+                    Logger.LogMessage("Rejected because unauthorized exception trying to find owner: " +
+                                        fsEvent.FullPath);
+                    return;
                 }
+                catch (Exception e)
+                {
+                    Logger.LogMessage("Unknown error trying to find owner (file/dir not being rejected) Error: " + e.Message + " Path: " + fsEvent.FullPath);
+                }
+
                 // Filter on username
                 if (!FilterUserCheck(userName, out filterCaught))
                 {
