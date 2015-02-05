@@ -2,9 +2,9 @@
 using System.IO;
 using System.Text;
 
-namespace HipChatNativeClient
+namespace LaserLinks
 {
-    public class HipChatFileProcessor
+    public class LaserLinksProcessor
     {
         /*  Just same sample input json
             akorczynski 12/14/2014 6:06:46 PM {"file":"c:\\Temp2\\New Text Document.txt","dir":"c:\\Temp2","cmd":"openfile"}
@@ -53,12 +53,12 @@ namespace HipChatNativeClient
 
         public static void LogMessage(string message)
         {
-            var logLocation = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\HipChatClient\";
+            var logLocation = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\LaserLinks\";
             if (!Directory.Exists(logLocation))
             {
                 Directory.CreateDirectory(logLocation);
             }
-            using (var sw = new StreamWriter(logLocation + @"\HipChatClientLog.txt", true))
+            using (var sw = new StreamWriter(logLocation + @"\LaserLinksLog.txt", true))
             {
                 sw.WriteLine(DateTime.Now.ToString("MM/dd/yy hh:mm:ss.fff") + " " + message);
             }

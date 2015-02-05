@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 
-namespace HipChatNativeClient
+namespace LaserLinks
 {
     public class Startup : Application
     {
@@ -22,7 +22,7 @@ namespace HipChatNativeClient
             // Skip the first 4 bytes b/c hey just hold size which we already know
             char[] chars = Encoding.UTF7.GetChars(bytes, 4, outputLength - 4);
             var incomingStr = new string(chars);
-            HipChatFileProcessor.ProcessFile(incomingStr, ShowMessage, ShowFileOrDir);
+            LaserLinksProcessor.ProcessFile(incomingStr, ShowMessage, ShowFileOrDir);
             //ShowWindow();
         }
 

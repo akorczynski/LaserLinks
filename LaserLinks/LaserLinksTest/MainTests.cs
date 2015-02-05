@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using HipChatNativeClient;
+using LaserLinks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HipChatClientTest
+namespace LaserLinksTest
 {
     /*  Just same sample input json
         akorczynski 12/14/2014 6:06:46 PM {"file":"c:\\Temp2\\New Text Document.txt","dir":"c:\\Temp2","cmd":"openfile"}
@@ -21,7 +21,7 @@ namespace HipChatClientTest
         [TestMethod]
         public void LogTest()
         {
-            HipChatFileProcessor.LogMessage("Test");
+            LaserLinksProcessor.LogMessage("Test");
             Assert.IsTrue(true);
         }
 
@@ -29,7 +29,7 @@ namespace HipChatClientTest
         public void GeneralFileTest()
         {
             CreateLocalFile(LOCAL_FILENAME);
-            bool result = HipChatFileProcessor.ProcessFile(@"{""file"":""" + LOCAL_FILENAME + @""",""dir"":""c:\\Temp2"",""cmd"":""openfile""}", SetShowMessageAction(), SetShowFileOrDir());
+            bool result = LaserLinksProcessor.ProcessFile(@"{""file"":""" + LOCAL_FILENAME + @""",""dir"":""c:\\Temp2"",""cmd"":""openfile""}", SetShowMessageAction(), SetShowFileOrDir());
             Assert.IsTrue(result);
         }
 
@@ -37,7 +37,7 @@ namespace HipChatClientTest
         public void GeneralDirTest()
         {
             CreateLocalDir(LOCAL_DIRNAME);
-            bool result = HipChatFileProcessor.ProcessFile(@"{""file"":""" + LOCAL_DIRNAME + @""",""dir"":""c:\\temp2"",""cmd"":""opendir""}", SetShowMessageAction(), SetShowFileOrDir());
+            bool result = LaserLinksProcessor.ProcessFile(@"{""file"":""" + LOCAL_DIRNAME + @""",""dir"":""c:\\temp2"",""cmd"":""opendir""}", SetShowMessageAction(), SetShowFileOrDir());
             Assert.IsTrue(result);
         }
 
@@ -50,7 +50,7 @@ namespace HipChatClientTest
         public void FileSpecialCharacterTest()
         {
             CreateLocalFile(LOCAL_SPECIAL_FILENAME);
-            bool result = HipChatFileProcessor.ProcessFile(@"{""file"":""" + LOCAL_SPECIAL_FILENAME + @""",""dir"":""c:\\Temp2"",""cmd"":""openfile""}", SetShowMessageAction(), SetShowFileOrDir());
+            bool result = LaserLinksProcessor.ProcessFile(@"{""file"":""" + LOCAL_SPECIAL_FILENAME + @""",""dir"":""c:\\Temp2"",""cmd"":""openfile""}", SetShowMessageAction(), SetShowFileOrDir());
             Assert.IsTrue(result);
         }
 
@@ -58,7 +58,7 @@ namespace HipChatClientTest
         public void NetworkFileTest()
         {
             // Just put in a url based file that can be anywhere..more for testing time out than anything
-            bool result = HipChatFileProcessor.ProcessFile(@"{""file"":""" + NETWORK_FILENAME + @""",""dir"":""\\unknownDrive"",""cmd"":""openfile""}", SetShowMessageAction(), SetShowFileOrDir());
+            bool result = LaserLinksProcessor.ProcessFile(@"{""file"":""" + NETWORK_FILENAME + @""",""dir"":""\\unknownDrive"",""cmd"":""openfile""}", SetShowMessageAction(), SetShowFileOrDir());
             Assert.IsTrue(result);
         }
 

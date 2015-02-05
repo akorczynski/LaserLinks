@@ -7,8 +7,8 @@
     <ProjectGuid>{47046450-221E-4299-9957-415299D38275}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HipChatDebouncerInstaller</RootNamespace>
-    <AssemblyName>HipChatDebouncerInstaller</AssemblyName>
+    <RootNamespace>LaserLinksInstaller</RootNamespace>
+    <AssemblyName>LaserLinksInstaller</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,16 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="com.hipchat.linkshelper.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HipChatLinksHelper.exe" />
+    <None Include="com.hipchat.laserlinks.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LaserLinks.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

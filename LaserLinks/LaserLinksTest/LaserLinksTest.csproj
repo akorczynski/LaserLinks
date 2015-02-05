@@ -6,8 +6,8 @@
     <ProjectGuid>{3EB5DA6F-2F5C-4E06-9663-A6E1168F4456}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HipChatClientTest</RootNamespace>
-    <AssemblyName>HipChatClientTest</AssemblyName>
+    <RootNamespace>LaserLinksTest</RootNamespace>
+    <AssemblyName>LaserLinksTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HipChatNativeClient.csproj">
+    <ProjectReference Include="..\LaserLinks.csproj">
       <Project>{bb906333-734e-486a-b120-a2753542ceb3}</Project>
-      <Name>HipChatNativeClient</Name>
+      <Name>LaserLinks</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

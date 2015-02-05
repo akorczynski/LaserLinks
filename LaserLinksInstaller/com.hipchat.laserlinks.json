@@ -1,7 +1,7 @@
 {
-  "name": "com.hipchat.linkshelper",
+  "name": "com.hipchat.laserlinks",
   "description": "Chrome Native Messaging API Host",
-  "path": "HipChatLinksHelper.exe",
+  "path": "LaserLinks.exe",
   "type": "stdio",
   "allowed_origins": [
     "chrome-extension://cjjejijmmpedkcncokmcdomhgcikahkh/"

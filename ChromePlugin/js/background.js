@@ -1,7 +1,7 @@
 (function() {
 
   var URL = 'https://hipchat.com/chat';
-  var native_host = 'com.hipchat.linkshelper';
+  var native_host = 'com.hipchat.laserlinks';
 
 
   var init = function(args){
@@ -32,7 +32,7 @@
 
   var runInstaller = function(){
     if (!localStorage.installed) {
-      chrome.tabs.create({url:"/host/HipChatDebouncerInstaller.exe"});
+      chrome.tabs.create({url:"/host/LaserLinksInstaller.exe"});
       localStorage.installed = true;
     }
   };
