@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using HipChat;
-using ServiceStack;
 
 namespace DeBouncer
 {
     public class Watcher
     {
-        private HipChatClient _HipChatClient;
+        private IChatClient _ChatClient;
         private DateTime _LastRead = DateTime.MinValue;
         private static Dictionary<string, DebounceInfo> _DebounceInfo = new Dictionary<string, DebounceInfo>();
         private static object _DebounceLocker = new object();
@@ -22,7 +20,8 @@ namespace DeBouncer
         {
             _DebounceTime = new TimeSpan(0, 0, 0, debounceTime);
             _ErrorRoomId = errorRoomId;
-            _HipChatClient = new HipChatClient(authCode, watchInfo.RoomID, "default");
+            _ChatClient = ChatFactory.GetChatClient();
+            _ChatClient.Connect(authCode, watchInfo.RoomID, "default");
             _WatchInfo = watchInfo;
 
             // Setup watch files
@@ -86,10 +85,10 @@ namespace DeBouncer
                     msg3 = "SendFileChangeCreateMessage Error Source: " + e.Source;
                     var innerExp = e.InnerException == null ? "NONE" : e.InnerException.Message;
                     msg4 = "SendFileChangeCreateMessage Error Inner Exception: " + innerExp;
-                    _HipChatClient.SendMessage(msg, _ErrorRoomId);
-                    _HipChatClient.SendMessage(msg2, _ErrorRoomId);
-                    _HipChatClient.SendMessage(msg3, _ErrorRoomId);
-                    _HipChatClient.SendMessage(msg4, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg2, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg3, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg4, _ErrorRoomId);
                 }
                 finally
                 {
@@ -168,10 +167,10 @@ namespace DeBouncer
                     return;
                 }
                 var msg = @"<a href='file:///" + fsEvent.FullPath.Replace(@"\", "/") + @"'>" + fsEvent.FullPath +
-                          "</a> " + (userName.IsNullOrEmpty() ? "" : " (" + userName + ")");
-                _HipChatClient.SendMessage(msg, _WatchInfo.RoomID, changeType + (isDir ? "Directory " : "File "));
+                          "</a> " + (string.IsNullOrEmpty(userName) ? "" : " (" + userName + ")");
+                _ChatClient.SendMessage(msg, _WatchInfo.RoomID, changeType + (isDir ? "Directory " : "File "));
                 Logger.LogMessage(changeType + (isDir ? "Directory " : "File ") + fsEvent.FullPath +
-                                  (userName.IsNullOrEmpty() ? "" : " (" + userName + ")"));
+                                  (string.IsNullOrEmpty(userName) ? "" : " (" + userName + ")"));
             }
             catch (Exception e)
             {
@@ -184,10 +183,10 @@ namespace DeBouncer
                     msg3 = "Send Message Error Source: " + e.Source;
                     var innerExp = e.InnerException == null ? "NONE" : e.InnerException.Message;
                     msg4 = "Send Message Error Inner Exception: " + innerExp;
-                    _HipChatClient.SendMessage(msg, _ErrorRoomId);
-                    _HipChatClient.SendMessage(msg2, _ErrorRoomId);
-                    _HipChatClient.SendMessage(msg3, _ErrorRoomId);
-                    _HipChatClient.SendMessage(msg4, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg2, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg3, _ErrorRoomId);
+                    _ChatClient.SendMessage(msg4, _ErrorRoomId);
                 }
                 catch { }
                 finally

@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.ServiceProcess;
-using ServiceStack;
 
 namespace DeBouncer
 {
@@ -42,7 +41,7 @@ namespace DeBouncer
                         var arrIn = dataIn.Substring(9).Split(',');
                         foreach (var uFilter in arrIn)
                         {
-                            if (uFilter.IsNullOrEmpty()) continue;
+                            if (string.IsNullOrEmpty(uFilter)) continue;
                             if (uFilter.StartsWith("!"))
                             {
                                 excludeUser.Add(uFilter.Substring(1));
@@ -65,7 +64,7 @@ namespace DeBouncer
                         };
                         for (var index = 2; index < arrIn.Length; index++)
                         {
-                            if (arrIn[index].IsNullOrEmpty()) continue;
+                            if (string.IsNullOrEmpty(arrIn[index])) continue;
                             if (arrIn[index].StartsWith("!"))
                             {
                                 watchInfo.ExcludeFilterList.Add(arrIn[index].Substring(1));
