@@ -21,7 +21,7 @@ namespace DeBouncer
             _DebounceTime = new TimeSpan(0, 0, 0, debounceTime);
             _ErrorRoomId = errorRoomId;
             _ChatClient = ChatFactory.GetChatClient();
-            _ChatClient.Connect(authCode, watchInfo.RoomID, "default");
+            _ChatClient.Connect(authCode, "default");
             _WatchInfo = watchInfo;
 
             // Setup watch files

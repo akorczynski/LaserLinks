@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HipchatApiV2;
 
 namespace DeBouncer
 {
@@ -10,7 +11,7 @@ namespace DeBouncer
     {
         public static IChatClient GetChatClient()
         {
-            return null;
+            return new HipChatApi2Wrapper();
         }
     }
 }

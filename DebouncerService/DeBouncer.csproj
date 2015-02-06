@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HipchatApiV2">
+      <HintPath>packages\Hipchat-CS.0.0.49\lib\HipchatApiV2.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>packages\ServiceStack.Text.4.0.18\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -48,6 +54,7 @@
     <Compile Include="DebounceInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="HipChatApi2Wrapper.cs" />
     <Compile Include="IChatClient.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
@@ -60,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.txt" />
