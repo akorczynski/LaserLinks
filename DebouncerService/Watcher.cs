@@ -188,7 +188,10 @@ namespace DeBouncer
                     _ChatClient.SendMessage(msg3, _ErrorRoomId);
                     _ChatClient.SendMessage(msg4, _ErrorRoomId);
                 }
-                catch { }
+                catch
+                {
+                    // ignored
+                }
                 finally
                 {
                     Logger.LogMessage(msg + "\n" + msg2 + "\n" + msg3 + "\n" + msg4);
@@ -225,12 +228,9 @@ namespace DeBouncer
             {
                 return true;
             }
-            foreach (var filter in _WatchInfo.IncludeUserList)
+            if (_WatchInfo.IncludeUserList.Any(filter => Regex.IsMatch(userName, filter)))
             {
-                if (Regex.IsMatch(userName, filter))
-                {
-                    return true;
-                }
+                return true;
             }
             filterCaught = "No user filters caught";
             return false;
@@ -251,13 +251,9 @@ namespace DeBouncer
             {
                 return true;
             }
-            foreach (var filter in _WatchInfo.InlucdeFilterList)
+            if (_WatchInfo.InlucdeFilterList.Any(filter => Regex.IsMatch(relativePath, filter)))
             {
-                if (Regex.IsMatch(relativePath, filter))
-                {
-
-                    return true;
-                }
+                return true;
             }
             filterUsed = "Caught by neither include or exclude";
             return false;

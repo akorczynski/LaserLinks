@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HipchatApiV2;
+﻿using HipchatApiV2;
 
 namespace DeBouncer
 {
@@ -16,14 +11,14 @@ namespace DeBouncer
             _HipchatClient = new HipchatClient(authCode);
         }
 
-        public void SendMessage(string message, int roomID)
+        public void SendMessage(string message, int roomId)
         {
-            _HipchatClient.SendNotification(roomID, message);
+            _HipchatClient.SendNotification(roomId, message);
         }
 
-        public void SendMessage(string message, int roomID, string from)
+        public void SendMessage(string message, int roomId, string from)
         {
-            SendMessage(message, roomID);
+            SendMessage(message, roomId);
         }
     }
 }

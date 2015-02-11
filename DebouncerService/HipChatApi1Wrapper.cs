@@ -11,14 +11,14 @@ namespace DeBouncer
             _HipchatClient = new HipChatClient(authCode, defaultRoom, "default");
         }
 
-        public void SendMessage(string message, int roomID)
+        public void SendMessage(string message, int roomId)
         {
-            _HipchatClient.SendMessage(message, roomID);
+            _HipchatClient.SendMessage(message, roomId);
         }
 
-        public void SendMessage(string message, int roomID, string from)
+        public void SendMessage(string message, int roomId, string from)
         {
-            _HipchatClient.SendMessage(message, roomID, from);
+            _HipchatClient.SendMessage(message, roomId, from);
         }
     }
 }
