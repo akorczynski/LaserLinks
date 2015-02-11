@@ -12,3 +12,14 @@ C:\Dev\HipChatDebounce\PDMLogger\bin\Debug\EPDMLogger.exe.config
 C:\Dev\HipChatDebounce\PDMLogger\obj\Debug\EPDMLogger.exe
 C:\Dev\HipChatDebounce\PDMLogger\obj\Debug\EPDMLogger.xml
 C:\Dev\HipChatDebounce\PDMLogger\obj\Debug\EPDMLogger.pdb
+C:\Dev\LaserLinks\PDMLogger\bin\Debug\EPDMLogger.exe.config
+C:\Dev\LaserLinks\PDMLogger\obj\Debug\EPDMLogger.exe
+C:\Dev\LaserLinks\PDMLogger\obj\Debug\EPDMLogger.xml
+C:\Dev\LaserLinks\PDMLogger\obj\Debug\EPDMLogger.pdb
+C:\Dev\LaserLinks\PDMLogger\bin\Debug\EPDMLogger.exe
+C:\Dev\LaserLinks\PDMLogger\bin\Debug\EPDMLogger.pdb
+C:\Dev\LaserLinks\PDMLogger\bin\Debug\EPDMLogger.xml
+C:\Dev\LaserLinks\PDMLogger\bin\Debug\HipChat.Net.dll
+C:\Dev\LaserLinks\PDMLogger\obj\Debug\EPDMLogger.Form1.resources
+C:\Dev\LaserLinks\PDMLogger\obj\Debug\EPDMLogger.Resources.resources
+C:\Dev\LaserLinks\PDMLogger\obj\Debug\EPDMLogger.vbproj.GenerateResource.Cache
