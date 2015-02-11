@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.ServiceProcess;
 
 namespace DeBouncer
@@ -20,7 +18,7 @@ namespace DeBouncer
 
         public void Start()
         {
-            int debounceTime;
+            int debounceSeconds;
             int errorRoomId;
             string authToken;
             string logFilePath;
@@ -29,7 +27,7 @@ namespace DeBouncer
             {
                 authToken = sr.ReadLine();
                 logFilePath = sr.ReadLine();
-                debounceTime = int.Parse(sr.ReadLine());
+                debounceSeconds = int.Parse(sr.ReadLine());
                 errorRoomId = int.Parse(sr.ReadLine());
                 var includeUser = new List<string>();
                 var excludeUser = new List<string>();
@@ -93,7 +91,7 @@ namespace DeBouncer
             foreach (var dirToWatch in dirsToWatch)
             {
                 var watcher = new Watcher();
-                watcher.StartWatch(authToken, debounceTime, errorRoomId, dirToWatch);
+                watcher.StartWatch(authToken, debounceSeconds, errorRoomId, dirToWatch);
                 _WatcherList.Add(watcher);
             }
             Logger.LogMessage("Started");
