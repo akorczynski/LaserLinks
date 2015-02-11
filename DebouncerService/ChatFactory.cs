@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HipchatApiV2;
-
-namespace DeBouncer
+﻿namespace DeBouncer
 {
     public static class ChatFactory
     {
-        public static IChatClient GetChatClient()
+        public static IChatClient GetChatClient(int apiNumber)
         {
-            return new HipChatApi2Wrapper();
+            IChatClient result;
+            switch (apiNumber)
+            {
+                case 1:
+                    result = new HipChatApi1Wrapper();
+                    break;
+                case 2:
+                    result = new HipChatApi2Wrapper();
+                    break;
+                default:
+                    result = new HipChatApi2Wrapper();
+                    break;
+            }
+            return result;
         }
     }
 }

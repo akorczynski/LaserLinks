@@ -20,8 +20,8 @@ namespace DeBouncer
         {
             _DebounceTime = new TimeSpan(0, 0, 0, debounceTime);
             _ErrorRoomId = errorRoomId;
-            _ChatClient = ChatFactory.GetChatClient();
-            _ChatClient.Connect(authCode, "default");
+            _ChatClient = ChatFactory.GetChatClient(1);
+            _ChatClient.Connect(authCode, watchInfo.RoomID, "default");
             _WatchInfo = watchInfo;
 
             // Setup watch files
@@ -65,12 +65,12 @@ namespace DeBouncer
                     _LastRead = lastWriteTime;
                 }
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
                 // Do nothing other than logging it
                 Logger.LogMessage("Unauthorized access exception: " + fsEvent.FullPath);
             }
-            catch (PathTooLongException e)
+            catch (PathTooLongException)
             {
                 SendMessage(fsEvent, false);
             }

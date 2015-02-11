@@ -10,11 +10,9 @@ namespace DeBouncer
     public class HipChatApi2Wrapper : IChatClient
     {
         private HipchatClient _HipchatClient;
-        private string _DefaultFrom;
 
-        public void Connect(string authCode, string defaultFrom)
+        public void Connect(string authCode, int defaultRoom, string defaultFrom)
         {
-            _DefaultFrom = defaultFrom;
             _HipchatClient = new HipchatClient(authCode);
         }
 

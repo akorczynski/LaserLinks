@@ -64,7 +64,6 @@ namespace Tests
             // TO DO  - need to start the watcher
             int errorRoomId;
             string authToken;
-            string dummy;
             int debounceTime;
             string logFilePath;
             using (var sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\Config.txt"))
