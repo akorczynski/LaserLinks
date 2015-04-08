@@ -36,7 +36,13 @@ Public Class Form1
             For Each myRev As rev In myRevs
                 Dim buildString As String = "EpdmReport: " & myRev.revNr & ": " & myRev.dateAdded & ": " & myRev.UserName(myDB) & ": " & myRev.filePath(myDB)
                 'your code here
-                HC.SendMessage(buildString)
+                Try
+                    HC.SendMessage(buildString)
+                Catch ex As Exception
+                    ListBox1.Items.Add("Hip chat error, probably too many messages: " & ex.Message)
+                    Exit For
+                End Try
+
                 ListBox1.Items.Add(buildString)
                 mySW.WriteLine(buildString)
                 myComm.CommandText = "Update EPDM_Reporting.dbo.Revisions Set datereported = '" & DateTime.Now & "', reportstatus = 1 where UniqueID =" & myRev.UniqueID
@@ -55,10 +61,12 @@ Public Class Form1
             Dim HC_API = objReader.ReadLine()
             Dim RoomID = objReader.ReadLine()
             HC = New HipChatClient(HC_API, RoomID)
+            HC.From = "PDMLink"
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+
 End Class
 
 Public Class rev
